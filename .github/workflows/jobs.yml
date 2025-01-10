@@ -4,6 +4,20 @@ on:
   push:
 
 jobs:
+  concurrency-job2:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: test
+    steps:
+      - run: sleep 15
+      
+  concurrency-job1:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: test
+    steps:
+      - run: sleep 15
+        
   deploy-job:
       name: deploy job
       runs-on: ubuntu-latest
